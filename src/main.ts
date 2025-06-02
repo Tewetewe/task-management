@@ -7,6 +7,13 @@ import { Reflector } from '@nestjs/core';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+
+  // Allow CORS for your frontend
+  app.enableCors({
+    origin: 'http://localhost:5001',
+    credentials: true,
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Task Manager API')
     .setDescription('JWT-protected API for user tasks')
